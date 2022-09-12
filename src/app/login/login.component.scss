@@ -41,7 +41,7 @@
     margin: 10px 0;
   }
   
-  .input-group input {
+  .input-group input, select {
     font-size: 1.1rem;
     padding: 8px;
     text-align: center;
@@ -86,6 +86,7 @@
     margin: 20px auto 20px;
     text-decoration: none;
     color: #D1C4E9;
+    cursor: pointer;
   }
 
   .forgot-password:hover {     

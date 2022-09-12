@@ -1,5 +1,5 @@
  <div class="fullscreen-container">
-    <div class="login-container">
+    <div class="login-container" *ngIf="isLogin">
       <h1>Login</h1>   
       <form class="form">
         <div class="input-group">
@@ -21,7 +21,53 @@
         </div>
         </div>      
         <button (click)="login()">Log in</button>       
-        <a href="" class="forgot-password">You do not have an account? Sign up here</a>  
+        <a  class="forgot-password" (click)="isLogin=!isLogin">You do not have an account? Sign up here</a>  
+      </form>    
+    </div>
+    <div class="login-container" *ngIf="!isLogin">
+      <h1>Register</h1>   
+      <form class="form">
+        <div class="input-group">
+          <input type="text" placeholder="Write your nickname"  class="input-username"
+          [formControl]="nickname"> 
+          <div class="alert-danger" *ngIf="nickname.invalid && (nickname.dirty || nickname.touched) || checkInputs">
+            <div class="container-error-message" *ngIf="nickname.errors?.['required']"
+            > Nickname required ** </div>
+            
+        </div>
+        </div>        
+        <div class="input-group">
+          <input type="password" placeholder="Write your password" class="input-password"
+          [formControl]="password">
+          <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched) ||checkInputs">
+            <div class="container-error-message" *ngIf="password.errors?.['required']"
+            > Password required ** </div>
+            
+        </div>
+        </div>    
+        <div class="input-group">
+          <input type="text" placeholder="Write your name" class="input-password"
+          [formControl]="name">
+          <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched) ||checkInputs">
+            <div class="container-error-message" *ngIf="name.errors?.['required']"
+            > Name required ** </div>
+            
+        </div>
+        </div>   
+        <div class="input-group">
+          <select  placeholder="Write your password" class="input-password" [formControl]="team"
+          >
+              <option  disable selected  value="">Choose your team</option>
+              <option *ngFor="let team of listTeam"  [value]="team">{{team}}</option>
+          </select>
+          <div class="alert-danger" *ngIf="team.invalid && (team.dirty || team.touched) ||checkInputs">
+            <div class="container-error-message" *ngIf="team.errors?.['required']"
+            > Team required ** </div>
+            
+        </div>
+        </div>     
+        <button (click)="signUp()"> Sign Up</button>       
+        <a  class="forgot-password" (click)="isLogin=!isLogin">I have account</a>  
       </form>    
     </div>
   </div>

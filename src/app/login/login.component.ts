@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/services/auth.service';
-
+import { UserService } from '../core/services/user.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,13 +11,23 @@ import { AuthService } from '../core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  public listTeam:any=['Amarillo','Azul','Rojo'];
+
+
+  public isLogin:any=true;
+
   public checkInputs:any=false;
   public nickname: FormControl;
   public password: FormControl;
 
-  constructor(private router: Router, private authService: AuthService) {
+  public name: FormControl;
+  public team: FormControl;
+
+  constructor(private router: Router, private authService: AuthService, private userService:UserService) {
     this.nickname= new FormControl('',[ Validators.required]);
     this.password= new FormControl('',[ Validators.required]);
+    this.name= new FormControl('',[ Validators.required]);
+    this.team= new FormControl('',[ Validators.required]);
    }
 
    public login(){
@@ -34,6 +45,11 @@ export class LoginComponent implements OnInit {
       });
     }else{
       this.checkInputs=true;
+      Swal.fire(
+        'Warning',
+        '¡Ops! fill in the fields.',
+        'error'
+      );
     }
 
    }
@@ -52,4 +68,59 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public signUp(){
+    if(this.name.valid&& this.password.valid && this.team.valid&& this.nickname.valid){
+    
+      let newUser={
+        nickname:this.nickname.value,
+        name:this.name.value,
+        password:this.password.value,
+        team:this.team.value
+      }
+      this.userService.signUp(newUser).subscribe({
+        next: (response:any) => {
+        
+          if(response.success){
+            Swal.fire(
+              'Notification',
+              'You can logIn :) ',
+              'success'
+            );
+            this.isLogin=true;
+          }else{
+            Swal.fire(
+              'Notification',
+              '¡Ops! Try with another Nickname',
+              'error'
+            );
+            this.clearInputs();
+          }
+       
+        },
+        error: (err: any) => {
+          
+          Swal.fire(
+            'Notification',
+            '¡Ops! Problem with the server',
+            'error'
+          );
+        
+        },
+      })
+    }else{
+      this.checkInputs=true;
+      Swal.fire(
+        'Warning',
+        '!Ops¡ fill in the fields ',
+        'error'
+      );
+    }
+    
+  }
+  public clearInputs(){
+    this.nickname= new FormControl('',[ Validators.required]);
+    this.password= new FormControl('',[ Validators.required]);
+    this.name= new FormControl('',[ Validators.required]);
+    this.team= new FormControl('',[ Validators.required]);
+  }
 }
