@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,14 +12,20 @@ export class PokemonService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public getPokemonsPagination(token:any, numPagination:any) {
+    var header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
+    };
 
-  /**
-   * Funcion para obtener las calificaciones que le han realizado a un usuario
-   * @param idUsuario, Id del usuario del cual se desean las calificaciones
-   */
-   public getPokemonsPagination(token:any, numPagination:any) {
-    return this.httpClient.get<any[]>(
-      `${environment.baseUrl}/${this.endPoint}/pagination/${numPagination}`
-    );
+    return this.httpClient.get(`${environment.baseUrl}/${this.endPoint}/pagination/${numPagination}`, header);
+  }
+
+  
+  public getPokemonById(token:any, IdPokemon:any) {
+    var header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
+    };
+
+    return this.httpClient.get(`${environment.baseUrl}/${this.endPoint}/${IdPokemon}`, header);
   }
 }

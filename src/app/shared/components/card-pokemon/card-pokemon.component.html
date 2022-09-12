@@ -16,10 +16,31 @@
                     
                     
             </div>
-            <div class="pokemon-button">
-                <button class="txt"> See pokemon</button>
+            <div class="pokemon-button" *ngIf="!detailPokemon">
+                <button class="txt" (click)="seeDetails()"> See pokemon</button>
             </div>
             
+            <div *ngIf="detailPokemon">
+                <h1 class="pokemon-name">Sprities</h1>
+                <div class="pokemon-stats center">
+                    <img src="{{pokemonInfo.sprites?.back_default }}" alt="">
+                    <img src="{{pokemonInfo.sprites?.back_female  }}" alt="">
+                    <img src="{{pokemonInfo.sprites?.back_shiny_female }}" alt="">
+                    <img src="{{pokemonInfo.sprites?.front_female }}" alt="">
+                    <img src="{{pokemonInfo.sprites?.back_shiny}}" alt="">
+                    <img src="{{pokemonInfo.sprites?.front_default }}" alt="">
+                    <img src="{{pokemonInfo.sprites?.front_shiny }}" alt="">
+                 </div>
+                 <h1 class="pokemon-name">Abilities</h1>
+                 <div class="pokemon-stats center bold" *ngFor="let ability of pokemonInfo.abilities; let i = index">
+                    <p> {{ability?.ability?.name}}</p>
+    
+                        
+                        
+                </div>
+            </div>
         </div>
     </div>
+
+  
 </div>

@@ -14,12 +14,16 @@ export class PokemonsComponent implements OnInit {
   public initialPaginationPokemons:any=1;
   public pokemons:any=[];
   public currentUser: any;
+  public stateViewList:any=true;
+
+  public pokemonSelect:any;
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchPokemons();
     this.fetchUser();
+    this.fetchPokemons();
+    
   }
 
   public fetchUser(){
@@ -33,7 +37,7 @@ export class PokemonsComponent implements OnInit {
 
 
   public fetchPokemons(){
-    this.pokemonService.getPokemonsPagination('',this.initialPaginationPokemons).subscribe((response:any)=>{
+    this.pokemonService.getPokemonsPagination(this.currentUser.token,this.initialPaginationPokemons).subscribe((response:any)=>{
       this.pokemons=response.pokemons;
       this.loading=true;
     });
@@ -60,6 +64,14 @@ export class PokemonsComponent implements OnInit {
      
   }
 
- 
+  public seeDetailPokemon(data:any){
+     this.pokemonSelect=data;
+     this.stateViewList=false;
+     console.log(this.pokemonSelect)
+  }
 
+
+  public back(){
+    this.stateViewList=true;
+  }
 }

@@ -4,6 +4,8 @@
    background-color: #EFEFBB;
    background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
    background: linear-gradient(to right, #D4D3DD, #EFEFBB);
+   height: max-content;
+
 }
 .container-list{
     display: grid;
@@ -13,12 +15,22 @@
     
 }
 
+.container-detail{
+  
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 1000px;;
+}
+
 .pagination-button{
     margin: 20px;
     text-align: center;
     
   //  background: linear-gradient(to right, #fad61f, #fad61f );
    
+}
+.pointer{
+    cursor: pointer;
 }
 
 .title{

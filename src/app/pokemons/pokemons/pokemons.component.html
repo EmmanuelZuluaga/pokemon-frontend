@@ -4,7 +4,7 @@
         <img src="../../../assets/img/logo-pokemon.webp" alt="">
     </div>
 
-    <div class="pagination-button"> 
+    <div class="pagination-button" *ngIf="stateViewList"> 
         
         <button class="button-pagination" (click)="changePagination('back')" *ngIf="initialPaginationPokemons>=11">
             <img src="../../../assets/icons/left.png" alt="">
@@ -16,24 +16,40 @@
 
         <h1 class="text-blue">Welcome {{currentUser?.nickname}}</h1>
     
-    <h1 class="text">Page {{pagination}}</h1>
+    <h1 class="text" *ngIf="stateViewList">Page {{pagination}}</h1>
+
+    
 
     <h1 class="text-red" (click)="closeSesion()">Close sesion</h1>
 
-    <div class="container-list">
+    <h1 class="text pointer" (click)="back()" *ngIf="!stateViewList">  Return to list</h1>
+
+    <div class="container-list" *ngIf="stateViewList">
 
         <div *ngFor="let pokemon of pokemons; let i = index">
             <app-card-pokemon 
+            [detailPokemon]="false"
             [pokemonInfo]="pokemon"
+            (emitPokemonInfo)="seeDetailPokemon($event)"
             >
             </app-card-pokemon>
         </div>    
     </div>
+
+    <div class="container-detail" *ngIf="!stateViewList">
+        <app-card-pokemon
+        [detailPokemon]="true"
+        [pokemonInfo]="pokemonSelect"
+        ></app-card-pokemon>
+    </div>
+
 </div>
 
 <div *ngIf="!loading">
     <app-page-loading>
     </app-page-loading>
 </div>
+
+
 
 

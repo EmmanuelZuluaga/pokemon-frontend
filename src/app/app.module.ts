@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PokemonsComponent } from './pokemons/pokemons/pokemons.component';
-import { DetailPokemonComponent } from './pokemons/detail-pokemon/detail-pokemon.component';
 import { CardPokemonComponent } from './shared/components/card-pokemon/card-pokemon.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { PageLoadingComponent } from './shared/components/page-loading/page-loading.component';
@@ -17,7 +16,6 @@ import { TokenInterceptorService } from './shared/interceptors/token-interceptor
     AppComponent,
     LoginComponent,
     PokemonsComponent,
-    DetailPokemonComponent,
     CardPokemonComponent,
     PageLoadingComponent,
   ],
