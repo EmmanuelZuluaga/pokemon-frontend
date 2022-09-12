@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/core/services/pokemon.service';
-import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-pokemons',
@@ -10,16 +10,26 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 export class PokemonsComponent implements OnInit {
 
   public loading:any=false;
+  public pagination:any=1;
   public initialPaginationPokemons:any=1;
   public pokemons:any=[];
+  public currentUser: any;
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchPokemons()
-   
+    this.fetchPokemons();
+    this.fetchUser();
   }
 
+  public fetchUser(){
+    this.currentUser=JSON.parse(localStorage.getItem('user') || '');
+  }
+
+  public closeSesion(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+  }
 
 
   public fetchPokemons(){
@@ -30,13 +40,17 @@ export class PokemonsComponent implements OnInit {
   }
 
   public changePagination(position:any){
-      this.loading=false;
+      
     if(position==='ahead'){
-      this.initialPaginationPokemons=this.initialPaginationPokemons+20;
+      this.loading=false;
+      this.initialPaginationPokemons=this.initialPaginationPokemons+10;
+      this.pagination++;
       this.fetchPokemons();
     }else{
-      if(this.initialPaginationPokemons>=21){
-        this.initialPaginationPokemons=this.initialPaginationPokemons-20;
+      if(this.initialPaginationPokemons>=11){
+        this.loading=false;
+        this.initialPaginationPokemons=this.initialPaginationPokemons-10;
+        this.pagination--;
         this.fetchPokemons();
       }
       

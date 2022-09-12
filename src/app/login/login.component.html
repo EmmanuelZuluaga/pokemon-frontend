@@ -3,13 +3,25 @@
       <h1>Login</h1>   
       <form class="form">
         <div class="input-group">
-          <input type="text" placeholder="Escriba su correo electronico" id="text" name="text" class="input-username"> 
+          <input type="text" placeholder="Write your nickname"  class="input-username"
+          [formControl]="nickname"> 
+          <div class="alert-danger" *ngIf="nickname.invalid && (nickname.dirty || nickname.touched) || checkInputs">
+            <div class="container-error-message" *ngIf="nickname.errors?.['required']"
+            > Nickname required ** </div>
+            
+        </div>
         </div>        
         <div class="input-group">
-          <input type="password" placeholder="Escriba su contraseña" id="password" name="password" class="input-password">
+          <input type="password" placeholder="Write your password" class="input-password"
+          [formControl]="password">
+          <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched) ||checkInputs">
+            <div class="container-error-message" *ngIf="password.errors?.['required']"
+            > Password required ** </div>
+            
+        </div>
         </div>      
-        <button>Entrar</button>       
-        <a href="" class="forgot-password">¿No tienes cuenta? Registrate aquí</a>  
+        <button (click)="login()">Log in</button>       
+        <a href="" class="forgot-password">You do not have an account? Sign up here</a>  
       </form>    
     </div>
   </div>

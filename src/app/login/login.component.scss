@@ -73,7 +73,7 @@
     border: none;
     outline: none;
     color: white;
-    background: linear-gradient(90deg, #2444a5 0%, #4B70E2 71%);
+    background: linear-gradient(90deg, #f6e700 0%, #efe77b 71%);
   }
   
   button:focus,
@@ -89,9 +89,19 @@
   }
 
   .forgot-password:hover {     
-  color: #2444a5    ;
+  color: #f6e700    ;
   }
   
+  .container-error-message{
+    text-align: center;
+  padding: 5px;
+}
+.alert-danger{
+  color: #fa0019;
+  margin: 1px;
+  font: normal normal bold 13px Open Sans, sans-serif;
   
+
+}
   
   

@@ -1,9 +1,9 @@
 .principal-container{
-    background-image: url('../../../assets/img/pokemon-backgrounds.jpg');
-    background-size: auto;
-  // background-color: #EFEFBB;
-  // background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
- //  background: linear-gradient(to right, #D4D3DD, #EFEFBB);
+   // background-image: url('../../../assets/img/pokemon-backgrounds.jpg');
+    //background-size: auto;
+   background-color: #EFEFBB;
+   background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
+   background: linear-gradient(to right, #D4D3DD, #EFEFBB);
 }
 .container-list{
     display: grid;
@@ -13,10 +13,12 @@
     
 }
 
-.pagination{
+.pagination-button{
     margin: 20px;
-    background: linear-gradient(to right, #fad61f, #fad61f );
     text-align: center;
+    
+  //  background: linear-gradient(to right, #fad61f, #fad61f );
+   
 }
 
 .title{
@@ -30,3 +32,45 @@
     }
 }
 
+.button-pagination{
+    border: none;
+    background: transparent;
+    width: 100px  !important;
+    img{
+        width: 70%;
+    }
+}
+
+
+h1{
+    margin-top: 30px;
+	color: #fff;
+	font-size:30px;
+	text-align: center;
+	font-family: 'Bungee Shade', cursive;
+	letter-spacing: 10px;
+}
+
+.text{
+	text-shadow: 0 0 5px #f6e700,
+	0 0 10px #f6e700,
+	0 0 15px #f6e700,
+	0 0 20px #f6e700;
+}
+
+.text-blue{
+	text-shadow: 0 0 5px blue,
+	0 0 10px blue,
+	0 0 15px blue,
+	0 0 20px blue;
+}
+
+.text-red{
+    text-align: center;
+    font-size: 15px !important;
+    text-shadow: 0 0 5px red,
+	0 0 10px red,
+	0 0 15px red,
+	0 0 20px red !important;
+    cursor: pointer;
+}
