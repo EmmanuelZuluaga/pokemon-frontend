@@ -1,0 +1,33 @@
+
+<div class="principal-container" *ngIf="loading">
+    <div class="title">
+        <img src="../../../assets/img/logo-pokemon.webp" alt="">
+    </div>
+    <div class="container-list">
+
+        <div *ngFor="let pokemon of pokemons; let i = index">
+            <app-card-pokemon 
+            [pokemonInfo]="pokemon"
+            >
+            </app-card-pokemon>
+        </div>
+    
+    </div>
+    
+
+    <div> <button (click)="changePagination('back')">
+        Back
+    </button><button (click)="changePagination('ahead')">
+        Next
+    </button></div>
+ 
+
+</div>
+
+<div *ngIf="!loading">
+    <app-page-loading>
+        
+    </app-page-loading>
+</div>
+
+

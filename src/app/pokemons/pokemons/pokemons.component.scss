@@ -1,0 +1,32 @@
+.principal-container{
+    background-image: url('../../../assets/img/pokemon-backgrounds.jpg');
+    background-size: auto;
+  // background-color: #EFEFBB;
+  // background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
+ //  background: linear-gradient(to right, #D4D3DD, #EFEFBB);
+}
+.container-list{
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+}
+
+.pagination{
+    margin: 20px;
+    background: linear-gradient(to right, #fad61f, #fad61f );
+    text-align: center;
+}
+
+.title{
+    position: relative;
+    border-radius: 10px;
+    padding-top: 20px;
+  //  background: red;
+    text-align: center;
+    img{
+        width: 50%;
+    }
+}
+

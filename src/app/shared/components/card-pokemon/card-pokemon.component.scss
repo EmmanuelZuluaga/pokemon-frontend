@@ -1,0 +1,105 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+body{
+    font-family: "Arial";
+}
+
+.pokemon-card-container{
+    background: linear-gradient(to right, #fad61f, #fad61f );
+    width: auto;
+    height: auto;
+    margin: 10%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.content{
+    background: linear-gradient(to right, #f5e593, #fff2af );
+    padding: 10px;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+}
+
+.background{
+    background: linear-gradient(to right, #6a5b0e, #6a5b0e );
+    text-align: center;
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px ;
+}
+
+.pokemon-type{
+ background-color: black;
+ padding: 5px;
+color: white;    
+border-radius: 5px;
+width: 100px;
+display: block;
+text-align: center;
+position: relative;
+top: -70px;
+}
+
+
+
+.image{
+    width: 200px;
+    height: 200px;
+}
+
+.pokemon-name{
+    text-align: center;
+    font-size: 19px;
+    font-weight: lighter;
+    padding: 10px;
+}
+
+.pokemon-logo{
+    text-align: center;
+    font-size: 14px;
+}
+
+.pokemon-stats >p{
+    letter-spacing: 1px;
+}
+
+.pokemon-button{
+    text-align: center;
+}
+
+
+
+
+
+
+.txt {
+    border: none;
+    background: linear-gradient(-45deg, #6355a4, red, #e89a3e, aqua);
+    background-size: 300%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1 px;
+    word-spacing: 10px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* -webkit-text-fill-color: transparent;/ */
+    animation: zee 1s linear infinite;
+}
+
+@keyframes zee {
+    0% {
+        background-position: 0px 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0px 50%;
+    }
+}

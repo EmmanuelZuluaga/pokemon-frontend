@@ -1,0 +1,25 @@
+
+<div class="pokemon-card-container">
+    <div class="pokemon-card">
+        <div class="background">
+            <h1 class="pokemon-name">{{pokemonInfo.id}}</h1>
+            <img src="{{pokemonInfo.sprites.front_default}}" alt="" class="image">
+        </div>
+        <div class="content">
+            <h1 class="pokemon-name">{{pokemonInfo.name}}</h1>
+           
+            <span class="pokemon-type"> {{pokemonInfo.types[0]?.type?.name}}</span>
+            <div class="pokemon-stats" *ngFor="let stats of pokemonInfo.stats; let i = index">
+                <p> {{stats.stat.name}}:  
+                    {{stats.base_stat}}</p>
+
+                    
+                    
+            </div>
+            <div class="pokemon-button">
+                <button class="txt"> See pokemon</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
